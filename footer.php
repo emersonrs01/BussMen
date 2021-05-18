@@ -9,15 +9,15 @@
 	<link href="resources/smartmenus/css/sm-mint/sm-mint.css" rel="stylesheet" type="text/css"/>
 	<link rel="stylesheet" href="resources/fontawesome/css/all.css">
 	<link rel="stylesheet" href="resources/estilos.css">
+
 </head>
 <body>
-    <footer style="display: absolute; left: 0px; top: 100%">
-        <nav class="main-nav" role="navigation">
-	        <ul id="main-menu" class="sm sm-mint">
-	    </ul>
-	    </nav>
-<h4>Powered By ADS/UPF 2021</h4>
-<h6>Edgar / Emerson</h6>
-    </footer>
+<footer class="fixed-bottom bg-light text-center text-lg-start">
+  <div class="text-center p-3" style="background-color: silver;">
+	<p>Desenvolvido por: Emerson Da Rocha, Edgar Neto.
+ADS UPF 2021/01</p>
+<ul id="main-menu" class="sm sm-mint">
+  </div>
+</footer>
 </body>
 </html>
