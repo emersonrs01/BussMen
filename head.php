@@ -15,31 +15,14 @@
     <h6>Mensagens Corporativas</h6>
 		<nav class="main-nav" role="navigation">
 	  <ul id="main-menu" class="sm sm-mint">
-	    <li><a href="home.php">Inicio</a></li>
-	    <li><a href="#">Mensagens</a>
-	      <ul>
-	        <li><a href="/mensagens/enviar.php">Enviar</a></li>
-	        <li><a href="/mensagens/enviadas.php">Enviadas</a></li>
-          <li><a href="/mensagens/recebidas.php">Recebidas</a></li>
-				</ul>
-			</li>
-      <li><a href="#">Gestão</a>
-	      <ul>
-	        <li><a href="/gestao/grupos.php">Grupos</a></li>
-	        <li><a href="/gestao/usuarios.php">Usuários</a></li>
-				</ul>
-			</li>
-      <li><a href="sair.php">Extras</a>
-          <ul>
-	        	<li><a href="http://www.upf.br">UPF.BR</a></li>
-	        	<li><a href="http://www.duotech.inf.br">DuoTech Tecnologia</a></li>
-            <li><a href="http://www.compassouol.com">Compasso UOL</a></li>
-					</ul>
-        </li>
-				<li><a href="sair.php">Sair</a></li>
+			<li><a href="home.php">Inicio</a></li>
+	  	<li><a href="mensagens/enviar.php">Enviar</a></li>
+	  	<li><a href="mensagens/enviadas.php">Enviadas</a></li>
+    	<li><a href="mensagens/recebidas.php">Recebidas</a></li>
+    	<li><a href="gestao/grupos.php">Grupos</a></li>
+	  	<li><a href="gestao/usuarios.php">Usuários</a></li>
+    	<li><a href="sair.php">Sair</a></li></ul>
 	</nav>
-		<script type="text/javascript" src="resources/smartmenus/libs/jquery/jquery.js"></script>
-		<script type="text/javascript" src="resources/smartmenus/jquery.smartmenus.js"></script>
 		<script type="text/javascript">
 		$(function() {
 		$('#main-menu').smartmenus({

@@ -13,10 +13,14 @@
 </head>
 <body>
 <footer class="fixed-bottom bg-light text-center text-lg-start">
+
   <div class="text-center p-3" style="background-color: silver;">
+	<nav class="main-nav" role="navigation">
+	        <ul id="main-menu" class="sm sm-mint">
+	    </ul>
+	    </nav>
 	<p>Desenvolvido por: Emerson Da Rocha, Edgar Neto.
 ADS UPF 2021/01</p>
-<ul id="main-menu" class="sm sm-mint">
   </div>
 </footer>
 </body>
