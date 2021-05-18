@@ -19,6 +19,7 @@
 	        <ul id="main-menu" class="sm sm-mint">
 	    </ul>
 	    </nav>
+			<br>
 	<p>Desenvolvido por: Emerson Da Rocha, Edgar Neto.
 ADS UPF 2021/01</p>
   </div>
