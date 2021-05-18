@@ -1,0 +1,10 @@
+body {
+	padding: 20px;
+	background-color: silver;
+}
+thead {
+	font-weight: bold;
+}
+table {
+	font-weight: lighter ;
+}
