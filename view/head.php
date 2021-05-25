@@ -2,13 +2,13 @@
 <html>
 <head>
 <title>Cabeçalho APP Aulas</title>
-	<link rel="stylesheet" href="resources/bootstrap/css/bootstrap.min.css">
-	<script src="resources/jquery/jquery-3.6.0.min.js"></script>
-	<script src="resources/bootstrap/js/bootstrap.min.js"></script>
-	<link href="resources/smartmenus/css/sm-core-css.css" rel="stylesheet" type="text/css"/>
-	<link href="resources/smartmenus/css/sm-mint/sm-mint.css" rel="stylesheet" type="text/css"/>
-	<link rel="stylesheet" href="resources/fontawesome/css/all.css">
-	<link rel="stylesheet" href="resources/estilos.css">
+	<link rel="stylesheet" href="../resources/bootstrap/css/bootstrap.min.css">
+	<script src="../resources/jquery/jquery-3.6.0.min.js"></script>
+	<script src="../resources/bootstrap/js/bootstrap.min.js"></script>
+	<link href="../resources/smartmenus/css/sm-core-css.css" rel="stylesheet" type="text/css"/>
+	<link href="../resources/smartmenus/css/sm-mint/sm-mint.css" rel="stylesheet" type="text/css"/>
+	<link rel="stylesheet" href="../resources/fontawesome/css/all.css">
+	<link rel="stylesheet" href="../resources/estilos.css">
 </head>
 <body>
 	<h2>Sistema BussMen</h2>
