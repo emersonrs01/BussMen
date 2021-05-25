@@ -4,8 +4,8 @@
 class FabricaConexao extends PDO {
   private $dbn = "mysql:host=localhost;port=3306;dbname=bancoteste";
   // private $dbn = "pgsql:host=localhost;port=5432;dbname=bancoteste";
-  private $usr = "root";
-  private $pwd = "";
+  private $usr = "emerson";
+  private $pwd = "senha";
   public $handle = null;
 
   // Construtor do objeto de conexão
