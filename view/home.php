@@ -5,7 +5,7 @@
 </head>
 <body>
     <?php
-        include 'header.php';
+        include("../include/SessaoValidate.php");  
     ?> 
     <br>
 	<br>
@@ -18,7 +18,7 @@
     Porque ele deve ficar embaixo no alinhamento da pagina, e o body no meio, de forma dinâmica. 
     <?php
         include 'footer.php';
-        include("../include/SessaoValidate.php");  
+        
     ?> 
     
 </body>

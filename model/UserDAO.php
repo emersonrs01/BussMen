@@ -20,14 +20,15 @@ class UserDAO {
 	    return -1;
 	
 	    /* A partir daqui, o usuário é novo e será salvo no BD */
-      $stmt = $this->p->prepare("INSERT INTO usuario (IdPessoa, nome, data_nasc, CargoPessoa) VALUES (?, ?, ?,?)");
+      $stmt = $this->p->prepare("INSERT INTO usuario (IdPessoa, nome, data_nasc, senha, CargoPessoa) VALUES (?, ?, ?,?,?)");
 
       // Inicia a transação
       $this->p->beginTransaction();
       $stmt->bindValue(1, $obj->IdPessoa);
       $stmt->bindValue(2, $obj->nome);
       $stmt->bindValue(3, $obj->data_nasc);
-      $stmt->bindValue(3, $obj->CargoPessoa);
+      $stmt->bindValue(4, $obj->senha);
+      $stmt->bindValue(5, $obj->CargoPessoa);
     
       // Executa a query
       $stmt->execute();
@@ -63,13 +64,22 @@ class UserDAO {
         return -2;
       }
       else {
-        if (strcmp($registro["CargoPessoa"], $obj->CargoPessoa) !== 0) {
+        if (strcmp($registro["senha"], $obj->senha) !== 0) {
           // Senha não confere
           return -1;
         }
         else {
-          // Tudo certo!
-          return 1;
+          if(!isset($_SESSION)) 
+            { 
+              session_start();
+              $_SESSION["nome_usuario"] = $registro["nome"];
+              $_SESSION["senha_usuario"] = $registro["senha"];
+              $_SESSION["Cargo_pessoa"] = $registro["CargoPessoa"];
+              return 1;
+             }else{
+               return 1;
+             }
+
         }
       }
     }

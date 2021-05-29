@@ -14,12 +14,15 @@
     
   if(isset($_SESSION["senha_usuario"]))
     $senha_usuario = $_SESSION["senha_usuario"];
+
+  if(isset($_SESSION["Cargo_pessoa"]))
+    $cargo_pessoa = $_SESSION["Cargo_pessoa"];
   
-  if(!empty($nome_usuario) || !empty($senha))
+  if(!empty($nome_usuario) || !empty($senha_usuario)  || !empty($cargo_pessoa)) 
   {
     $user = new User();
     $user->nome = $nome_usuario;
-    $user->CargoPessoa = $senha_usuario;
+    $user->senha = $senha_usuario;
   
     $DAO = new UserDAO();
     $result = $DAO->Consultar($user);
@@ -36,6 +39,11 @@
       echo "<script>";
       echo "document.getElementById(\"idLogin\").innerHTML = 'Logado como $nome_usuario'";
       echo "</script>";
+      if($_SESSION["Cargo_pessoa"] == 5){
+        include 'headerAdm.php';
+      }else{
+        include 'header.php';
+      }
     }
   }
   else {  // Se um dos campos for vazio

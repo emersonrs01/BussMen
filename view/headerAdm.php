@@ -19,6 +19,8 @@
 	  	<li><a href="mensagens/enviar.php">Enviar</a></li>
 	  	<li><a href="mensagens/enviadas.php">Enviadas</a></li>
     	<li><a href="mensagens/recebidas.php">Recebidas</a></li>
+    	<li><a href="gestao/grupos.php">Grupos</a></li>
+	  	<li><a href="gestao/usuarios.php">Usuários</a></li>
     	<li><a href="logout.php">Sair</a></li></ul>
 	</nav>
 		<script type="text/javascript">

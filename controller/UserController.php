@@ -9,7 +9,7 @@ class UserController {
     if (!empty($_POST['user']) && !empty($_POST['pwd'])) {
       $user = new User();
       $user->nome = $_POST['user'];
-      $user->CargoPessoa = ($_POST['pwd']);
+      $user->senha = md5($_POST['pwd']);
   
       $DAO = new UserDAO();
       $result = $DAO->Consultar($user);
@@ -24,9 +24,6 @@ class UserController {
           echo "<a href=\"../index.php\"><button>Voltar</button></a>";  
         }
         else {  /* Tudo certo - registrando as variáveis de sessão */
-          session_start();
-          $_SESSION["nome_usuario"] = $user->nome;
-          $_SESSION["senha_usuario"] = $user->CargoPessoa;
           header("location: ../view/home.php");  /* Direciona para a página inicial */
         }
       }
