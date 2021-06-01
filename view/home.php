@@ -10,9 +10,17 @@
 	<br>
 	Bem Vindo ao Sistema Bussmen<br><br>
     Acesse as ferramentas no menu acima.<br><br>
-    Aqui Deverá aparecer data e hora do sistema.<br><br>
-    To tentando incluir o footer mas não tá fácil<br><br>
-    Porque ele deve ficar embaixo no alinhamento da pagina, e o body no meio, de forma dinâmica. 
+    <?php
+    date_default_timezone_set("America/Sao_Paulo");
+    $ndia = date("w");$nmes = date("n");$ano = date("Y");
+    $dsemana = array(0 => 'Domingo','Segunda-Feira','Terça-Feira','Quarta-Feira','Quinta-Feira','Sexta-Feira','Sábado');
+    $mes = array(1 => 'Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho',
+                        'Agosto','Setembro','Outubro','Novembro','Dezembro');
+        $data = "Passo Fundo, ".date("H:i:s")." de ".$dsemana[(int)$ndia].", ".date("d")." de ".$mes[(int)$nmes].
+        " de ".date("Y").".";
+    echo $data;
+    ?>
+
     <?php
         include 'footer.php'; 
     ?> 
