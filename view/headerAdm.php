@@ -13,14 +13,15 @@
 <body>
 	<h2>Sistema BussMen</h2>
     <h6>Mensagens Corporativas</h6>
+	<br>
 		<nav class="main-nav" role="navigation">
 	  <ul id="main-menu" class="sm sm-mint">
 			<li><a href="home.php">Inicio</a></li>
-	  	<li><a href="mensagens/enviar.php">Enviar</a></li>
-	  	<li><a href="mensagens/enviadas.php">Enviadas</a></li>
-    	<li><a href="mensagens/recebidas.php">Recebidas</a></li>
-    	<li><a href="gestao/grupos.php">Grupos</a></li>
-	  	<li><a href="gestao/usuarios.php">Usuários</a></li>
+	  	<li><a href="enviar.php">Enviar</a></li>
+	  	<li><a href="enviadas.php">Enviadas</a></li>
+    	<li><a href="recebidas.php">Recebidas</a></li>
+    	<li><a href="grupos.php">Grupos</a></li>
+	  	<li><a href="usuarios.php">Usuários</a></li>
     	<li><a href="logout.php">Sair</a></li></ul>
 	</nav>
 		<script type="text/javascript">

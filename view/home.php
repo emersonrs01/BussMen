@@ -7,9 +7,6 @@
     <?php
         include("../include/SessaoValidate.php");  
     ?> 
-    <br>
-	<br>
-	<br>
 	<br>
 	Bem Vindo ao Sistema Bussmen<br><br>
     Acesse as ferramentas no menu acima.<br><br>

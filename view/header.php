@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Cabeçalho APP Aulas</title>
 	<link rel="stylesheet" href="../resources/bootstrap/css/bootstrap.min.css">
 	<script src="../resources/jquery/jquery-3.6.0.min.js"></script>
 	<script src="../resources/bootstrap/js/bootstrap.min.js"></script>
@@ -13,6 +12,7 @@
 <body>
 	<h2>Sistema BussMen</h2>
     <h6>Mensagens Corporativas</h6>
+	<br>
 		<nav class="main-nav" role="navigation">
 	  <ul id="main-menu" class="sm sm-mint">
 			<li><a href="home.php">Inicio</a></li>
