@@ -17,9 +17,7 @@
     To tentando incluir o footer mas não tá fácil<br><br>
     Porque ele deve ficar embaixo no alinhamento da pagina, e o body no meio, de forma dinâmica. 
     <?php
-        include 'footer.php';
-        
+        include 'footer.php'; 
     ?> 
-    
 </body>
 </html>
