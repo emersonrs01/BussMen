@@ -55,10 +55,8 @@ class UserDAO {
       pois a coluna apelido é chave primária */
       $stmt = $this->p->query("SELECT * FROM usuario WHERE nome = '$obj->nome'");
       $registro = $stmt->fetch(PDO::FETCH_ASSOC, PDO::FETCH_ORI_NEXT);
-
       // Fecha a conexão
       unset($this->p);
-
       if(!$registro) {
         // Não encontrou o usuário
         return -2;
@@ -84,6 +82,35 @@ class UserDAO {
       }
     }
     // Em caso de erro, retorna a mensagem:
+    catch(PDOException $e) {
+      echo "Erro: ". $e->getMessage();
+      return 0;
+    }
+  }
+  
+  public function Listar($pesq) {
+    $listresult = array();
+    try {
+      $stmt = $this->p->query("SELECT * FROM '$pesq'");
+      $listresult = $stmt->fetch(PDO::FETCH_ASSOC, PDO::FETCH_ORI_NEXT);
+      // Fecha a conexão
+      unset($this->p);
+      if(!$listresult) {
+        return -2;
+      }
+        else {
+          if(!isset($_SESSION)) 
+            { 
+              session_start();
+              $_SESSION["nome_usuario"] = $registro["nome"];
+              $_SESSION["senha_usuario"] = $registro["senha"];
+              $_SESSION["Cargo_pessoa"] = $registro["CargoPessoa"];
+              return 1;
+             }else{
+               return 1;
+             }
+        }
+      }
     catch(PDOException $e) {
       echo "Erro: ". $e->getMessage();
       return 0;

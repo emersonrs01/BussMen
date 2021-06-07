@@ -20,7 +20,6 @@
         " de ".date("Y").".";
     echo $data;
     ?>
-
     <?php
         include 'footer.php'; 
     ?> 

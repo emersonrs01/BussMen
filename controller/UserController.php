@@ -58,6 +58,10 @@ class UserController {
       unset($user);
     }
   }
+  public function buscaCadastro() {
+      $DAO = new UserDAO();
+      $result = $DAO->Listar();	  
+    }
 }
 
 ?>
