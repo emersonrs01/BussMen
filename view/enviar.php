@@ -13,7 +13,6 @@
   <p>
     <label>Insira seu Recado Aqui:</label></p>
     <p><textarea name="mensagem" cols="120" rows="7"></textarea></p>  
-    
 
 <p><input type="submit" name="button" id="button" value="Enviar"></p>
 </form>

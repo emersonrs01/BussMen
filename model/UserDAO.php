@@ -90,26 +90,19 @@ class UserDAO {
   
   public function Listar($pesq) {
     $registro = array();
+    $items = array();
     try {
-      $stmt = $this->p->query("SELECT * FROM '$pesq'");
-      $registro = $stmt->fetch(PDO::FETCH_ASSOC, PDO::FETCH_ORI_NEXT);
-      // Fecha a conexão
-      unset($this->p);
-      if(!$registro) {
-        return -2;
+      $stmt = $this->p->query("SELECT * FROM usuario");
+      $this->p = null;
+      while($registro = $stmt->fetch(PDO::FETCH_ASSOC, PDO::FETCH_ORI_NEXT))
+      {
+        $p = new User();
+      if(isset($registro["nome"]))
+        $p->nome = $registro["nome"];
+        $items[] = $p;
       }
-        else {
-          if(!isset($_SESSION)) 
-            { 
-              session_start();
-              $_SESSION["nome_usuario"] = $registro["nome"];
-              $_SESSION["senha_usuario"] = $registro["senha"];
-              $_SESSION["Cargo_pessoa"] = $registro["CargoPessoa"];
-              return 1;
-             }else{
-               return 1;
-             }
-        }
+      return $items;      // Fecha a conexão
+      unset($this->p);
       }
     catch(PDOException $e) {
       echo "Erro: ". $e->getMessage();
