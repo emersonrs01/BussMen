@@ -92,8 +92,7 @@ class UserDAO {
     $registro = array();
     $items = array();
     try {
-      $stmt = $this->p->query("SELECT * FROM usuario");
-      $this->p = null;
+      $stmt = $this->p->query("SELECT * FROM $pesq");
       while($registro = $stmt->fetch(PDO::FETCH_ASSOC, PDO::FETCH_ORI_NEXT))
       {
         $p = new User();
@@ -101,7 +100,7 @@ class UserDAO {
         $p->nome = $registro["nome"];
         $items[] = $p;
       }
-      return $items;      // Fecha a conexão
+      return $items;      
       unset($this->p);
       }
     catch(PDOException $e) {

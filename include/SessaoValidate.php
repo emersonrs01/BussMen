@@ -18,7 +18,7 @@
   if(isset($_SESSION["Cargo_pessoa"]))
     $cargo_pessoa = $_SESSION["Cargo_pessoa"];
   
-  if(!empty($nome_usuario) || !empty($senha_usuario)  || !empty($cargo_pessoa)) 
+  if(!empty($nome_usuario) || !empty($senha))
   {
     $user = new User();
     $user->nome = $nome_usuario;

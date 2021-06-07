@@ -5,7 +5,7 @@
 </head>
 <body>
     <?php
-        include("../include/SessaoValidate.php");  
+        include("../include/SessaoValidate.php"); 
     ?> 
 	<br>
 	Bem Vindo ao Sistema Bussmen<br><br>
@@ -22,6 +22,7 @@
     ?>
     <?php
         include 'footer.php'; 
+         
     ?> 
 </body>
 </html>

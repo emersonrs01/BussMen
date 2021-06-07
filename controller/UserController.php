@@ -60,8 +60,32 @@ class UserController {
   }
   public function buscaCadastro() {
       $DAO = new UserDAO();
-      $result = $DAO->Listar("grupo");	  
+      $grupo = $DAO->Listar("grupo");
+      $usuario = $DAO->Listar("usuario");
+      if(count($grupo) > 0) {
+        for($i = 0; $i < count($grupo); $i++) {
+          $nome   = $grupo[$i]->nome;  
+            
+          if($nome)
+            echo "<td style=\"text-align: left;\">$nome</td>";
+          
+          echo "<br>";
+        }
+      }
+
+     echo"<br>";
+    if(count($usuario) > 0) {
+      for($i = 0; $i < count($usuario); $i++) {
+        $nome   = $usuario[$i]->nome;  
+          
+        if($nome)
+          echo "<td style=\"text-align: left;\">$nome</td>";
+        
+        echo "<br>";
+      }
     }
+
+  }
 }
 
 ?>
