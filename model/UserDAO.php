@@ -89,13 +89,13 @@ class UserDAO {
   }
   
   public function Listar($pesq) {
-    $listresult = array();
+    $registro = array();
     try {
       $stmt = $this->p->query("SELECT * FROM '$pesq'");
-      $listresult = $stmt->fetch(PDO::FETCH_ASSOC, PDO::FETCH_ORI_NEXT);
+      $registro = $stmt->fetch(PDO::FETCH_ASSOC, PDO::FETCH_ORI_NEXT);
       // Fecha a conexão
       unset($this->p);
-      if(!$listresult) {
+      if(!$registro) {
         return -2;
       }
         else {

@@ -60,7 +60,7 @@ class UserController {
   }
   public function buscaCadastro() {
       $DAO = new UserDAO();
-      $result = $DAO->Listar();	  
+      $result = $DAO->Listar("grupo");	  
     }
 }
 
