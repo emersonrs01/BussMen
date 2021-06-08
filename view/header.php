@@ -10,9 +10,8 @@
 	<link rel="stylesheet" href="../resources/estilos.css">
 </head>
 <body>
-	<h2>Sistema BussMen</h2>
-    <h6>Mensagens Corporativas</h6>
-	<br>
+	<h2><b>Sistema BussMen</b></h2>
+    <h6><b>Mensagens Corporativas</b></h6>
 		<nav class="main-nav" role="navigation">
 	  <ul id="main-menu" class="sm sm-mint">
 			<li><a href="home.php">Inicio</a></li>
