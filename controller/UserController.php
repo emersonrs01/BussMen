@@ -58,30 +58,26 @@ class UserController {
       unset($user);
     }
   }
-  public function buscaCadastro() {
+  public function buscaCadastro($op) {
       $DAO = new UserDAO();
       $grupo = $DAO->Listar("grupo");
       $usuario = $DAO->Listar("usuario");
-      if(count($grupo) > 0) {
-        for($i = 0; $i < count($grupo); $i++) {
-          $nome   = $grupo[$i]->nome;  
-            
-          if($nome)
-            echo "<td style=\"text-align: left;\">$nome</td>";
-          
-          echo "<br>";
+      if($op==1){
+        if(count($grupo) > 0) {
+          echo "<option>Selecione...</option>";
+          for($i = 0; $i < count($grupo); $i++) {
+            $nome   = $grupo[$i]->nome;  
+            echo "<option>$nome</option>";
+          }
         }
-      }
-
-     echo"<br>";
-    if(count($usuario) > 0) {
-      for($i = 0; $i < count($usuario); $i++) {
-        $nome   = $usuario[$i]->nome;  
-          
-        if($nome)
-          echo "<td style=\"text-align: left;\">$nome</td>";
-        
-        echo "<br>";
+      }else{
+      echo"<br>";
+      if(count($usuario) > 0) {
+        echo "<option>Selecione...</option>";
+        for($i = 0; $i < count($usuario); $i++) {
+          $nome   = $usuario[$i]->nome;     
+          echo "<option>$nome</option>"; 
+        }
       }
     }
 

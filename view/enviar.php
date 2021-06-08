@@ -6,6 +6,8 @@
 <body>
     <?php
         include("../include/SessaoValidate.php");  
+        include_once("../controller/UserController.php");
+            $pesq = new UserController();
     ?> 
 	<br>
 	<h2>Enviar Mensagem</h2><br>
@@ -14,14 +16,13 @@
     <label>Insira seu Recado Aqui:</label></p>
     <p><textarea name="mensagem" cols="120" rows="7"></textarea></p>  
 
-<p><input type="submit" name="button" id="button" value="Enviar"></p>
-</form>
+    <label for="">Deseja Enviar á um Grupo? </label>
+    <select name="envgrp" id="envgrp"><?php $pesq->buscaCadastro(1);?></select><br>
+    
+    <label for="">Deseja Enviar á um Usuário? </label>
+    <select name="envusr" id="envusr"><?php $pesq->buscaCadastro(2);?></select><br>
 
-<?php
-    include_once("../controller/UserController.php");
-    $pesq = new UserController();
-    $pesq->buscaCadastro();
-  ?>
+    <input type="submit" name="button" id="button" value="Enviar"></input>
 
     <?php
         include 'footer.php'; 
