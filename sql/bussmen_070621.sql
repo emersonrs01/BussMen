@@ -52,8 +52,9 @@ INSERT INTO `cargo` (`IdCargo`, `salario`, `Nomecargo`) VALUES
 --
 
 CREATE TABLE `grupo` (
-  `IdGrupo` int(11) NOT NULL,
-  `nome` varchar(50) NOT NULL
+  `IdGrupo` int NOT NULL auto_increment,
+  `nome` varchar(50) NOT NULL,
+  primary key(IdGrupo)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -85,8 +86,8 @@ CREATE TABLE `mensagem` (
 --
 
 CREATE TABLE `mensagemgrupo` (
-  `Pessoaenviada` int(11) DEFAULT NULL,
-  `Grupo` int(11) DEFAULT NULL,
+  `Pessoaenviada` int DEFAULT NULL,
+  `Grupo` int DEFAULT NULL,
   `Mensagem2` varchar(200) DEFAULT NULL,
   `DataLida` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;

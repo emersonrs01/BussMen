@@ -10,7 +10,6 @@ class UserController {
       $user = new User();
       $user->nome = $_POST['user'];
       $user->senha = md5($_POST['pwd']);
-  
       $DAO = new UserDAO();
       $result = $DAO->Consultar($user);
   
@@ -42,17 +41,17 @@ class UserController {
       $result = $DAO->Inserir($user);
       if($result == 1) {
         $res = "USUÁRIO CADASTRADO COM SUCESSO!";
-        header("Location: ../view/cadastro.php?result=$res");
+        header("Location: ../view/usuarios.php?result=$res");
       }
       else if($result == -1) {
         $erros[] = "USUÁRIO JÁ EXISTENTE! TENTE NOVAMENTE!";
         $err = serialize($erros);
-        header("Location: ../view/cadastro.php?error=$err");
+        header("Location: ../view/usuarios.php?error=$err");
       }	  
       else {
         $erros[] = "ERRO NO BANCO DE DADOS: $DAO->erro";
         $err = serialize($erros);
-        header("Location: ../view/cadastro.php?error=$err");
+        header("Location: ../view/usuarios.php?error=$err");
       }
       
       unset($user);
@@ -82,6 +81,31 @@ class UserController {
     }
 
   }
+  public function inserirGrupo() {
+    if(isset($_POST["insgrp"])) {
+      $erros = array();
+      $DAO = new UserDAO();
+      $grupo = new User();
+      $grupo->nome=$_POST["insgrp"];
+      $result = $DAO->insGrupo($grupo);
+      if($result == 1) {
+        $res = "GRUPO CADASTRADO COM SUCESSO!";
+        header("Location: ../view/grupos.php?result=$res");
+      }
+      else if($result == -1) {
+        $erros[] = "GRUPO JÁ EXISTENTE! TENTE NOVAMENTE!";
+        $err = serialize($erros);
+        header("Location: ../view/grupos.php?error=$err");
+      }	  
+      else {
+        $erros[] = "ERRO NO BANCO DE DADOS: $DAO->erro";
+        $err = serialize($erros);
+        header("Location: ../view/grupos.php?error=$err");
+      }
+      unset($obj);
+    }
+  }
+  
 }
 
 ?>

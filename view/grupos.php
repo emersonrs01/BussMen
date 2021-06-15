@@ -12,11 +12,11 @@
 	<br>
 	<h5 style="padding-top:3vh;align-items: center; justify-content:center; text-align: center;">Adição de Grupos</h5>
 
-    <form id="formgrp" name="formgrp" method="post" action="grupos.php" style="padding-top:3vh;align-items: center; justify-content:center; text-align: center;">
+    <form id="insgrp" name="insgrp" method="post" action="grupos.php" style="padding-top:3vh;align-items: center; justify-content:center; text-align: center;">
     <label>Apenas Listando os Grupos Atuais:</label>
     <select name="listagrp" id="listagrp"><?php $pesq->buscaCadastro(1);?></select><br>
-    <div><label for="group">Digite o Novo Grupo:</label>
-    <input type="text" id="group" name="group"></div>
+    <div><label for="insgrp">Digite o Novo Grupo:</label>
+    <input type="text" id="group" name="insgrp"></div>
     <input type="submit" name="button" id="button" value="Criar"></input><br>
     </form><br>
 
@@ -36,6 +36,15 @@
     <label>Para Qual Grupo? </label>
     <select name="altusrgrp" id="altusrgrp"><?php $pesq->buscaCadastro(1);?></select><br>
     <input type="submit" name="button" id="button" value="Alterar"></input><br></form><br>
+    
+    <?php
+    include_once("../controller/UserController.php");
+    include_once("../model/User.php");
+    include_once("../model/UserDAO.php");
+    $obj = new UserController();
+    $obj->inserirGrupo();
+    ?>
+
     <?php
         include 'footer.php'; 
     ?> 

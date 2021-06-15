@@ -48,6 +48,34 @@ class UserDAO {
     }
   }
   
+  public function InsGrupo($obj) {
+    try {
+	    /* Primeiro, testa se o grupo informado já existe no BD.
+	     Se sim, retorna para tratamento no UserController */
+      $stmt = $this->p->query("SELECT * FROM grupo WHERE nome = '$obj->nome'");
+      if($stmt->fetch(PDO::FETCH_ASSOC, PDO::FETCH_ORI_NEXT))
+	    return -1;
+	    /* A partir daqui, o grupo é novo e será salvo no BD */
+      $stmt = $this->p->prepare("INSERT INTO `grupo` (`IdGrupo`, `nome`) VALUES (?, ?)");
+      // Inicia a transação
+      $this->p->beginTransaction();
+      $stmt->bindValue(1, NULL);
+      $stmt->bindValue(2, $obj->nome);
+      // Executa a query
+      $stmt->execute();
+      // Grava a transação
+      $this->p->commit();      
+      // Fecha a conexão
+      unset($this->p);
+      return 1;
+    }
+    // Em caso de erro, retorna a mensagem:
+    catch(PDOException $e) {
+      $this->erro = "Erro: " . $e->getMessage();
+      return 0;
+    }
+  }
+
   // consulta
   public function Consultar($obj) {
     try {
