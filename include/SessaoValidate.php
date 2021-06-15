@@ -14,9 +14,6 @@
     
   if(isset($_SESSION["senha_usuario"]))
     $senha_usuario = $_SESSION["senha_usuario"];
-
-  if(isset($_SESSION["Cargo_pessoa"]))
-    $cargo_pessoa = $_SESSION["Cargo_pessoa"];
   
   if(!empty($nome_usuario) || !empty($senha))
   {

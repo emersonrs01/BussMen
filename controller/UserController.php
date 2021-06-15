@@ -59,9 +59,8 @@ class UserController {
   }
   public function buscaCadastro($op) {
       $DAO = new UserDAO();
-      $grupo = $DAO->Listar("grupo");
-      $usuario = $DAO->Listar("usuario");
       if($op==1){
+        $grupo = $DAO->Listar("grupo");
         if(count($grupo) > 0) {
           echo "<option>Selecione...</option>";
           for($i = 0; $i < count($grupo); $i++) {
@@ -71,6 +70,7 @@ class UserController {
         }
       }else{
       echo"<br>";
+      $usuario = $DAO->Listar("usuario");
       if(count($usuario) > 0) {
         echo "<option>Selecione...</option>";
         for($i = 0; $i < count($usuario); $i++) {
@@ -103,6 +103,37 @@ class UserController {
         header("Location: ../view/grupos.php?error=$err");
       }
       unset($obj);
+    }
+  }
+
+  public function inserirMensagemG() {
+    if(isset($_POST["envgrp"])) {
+      $msg = $_POST["envgrp"];
+      if (strcmp($msg, "Selecione...") !== 0){
+
+      }else{
+        $erros = array();
+        $DAO = new UserDAO();
+        $grupo = new User();
+        $grupo->nome=$_POST["insgrp"];
+        $result = $DAO->insGrupo($grupo);
+        if($result == 1) {
+          $res = "GRUPO CADASTRADO COM SUCESSO!";
+          header("Location: ../view/grupos.php?result=$res");
+        }
+        else if($result == -1) {
+          $erros[] = "GRUPO JÁ EXISTENTE! TENTE NOVAMENTE!";
+          $err = serialize($erros);
+          header("Location: ../view/grupos.php?error=$err");
+        }	  
+        else {
+          $erros[] = "ERRO NO BANCO DE DADOS: $DAO->erro";
+          $err = serialize($erros);
+          header("Location: ../view/grupos.php?error=$err");
+        }
+        unset($obj);
+      }
+     
     }
   }
   

@@ -24,30 +24,6 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `cargo`
---
-
-CREATE TABLE `cargo` (
-  `IdCargo` int NOT NULL auto_increment,
-  `salario` decimal(10,2) NOT NULL,
-  `Nomecargo` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `cargo`
---
-
-INSERT INTO `cargo` (`IdCargo`, `salario`, `Nomecargo`) VALUES
-(null, '1500.00', 'Gerente'),
-(null, '1200.00', 'T?cnico'),
-(null, '1350.00', 'RH'),
-(null, '1800.00', 'T?cnico'),
-(null, '2200.00', 'BOSS'),
-(null, '1420.00', 'Financeiro');
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `grupo`
 --
 
@@ -72,11 +48,10 @@ INSERT INTO `grupo` (`IdGrupo`, `nome`) VALUES
 --
 
 CREATE TABLE `mensagem` (
-  `PessoaRecebido` int(11) NOT NULL,
-  `PessoaEnviado` int(11) NOT NULL,
+  `Pessoarecebido` int(11) NOT NULL,
+  `Pessoaenviada` int(11) NOT NULL,
   `mensagem` varchar(200) DEFAULT NULL,
-  `DataRecebida` date NOT NULL,
-  `DataLida` date DEFAULT NULL
+  `DataRecebida` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -88,17 +63,17 @@ CREATE TABLE `mensagem` (
 CREATE TABLE `mensagemgrupo` (
   `Pessoaenviada` int DEFAULT NULL,
   `Grupo` int DEFAULT NULL,
-  `Mensagem2` varchar(200) DEFAULT NULL,
-  `DataLida` date DEFAULT NULL
+  `mensagem` varchar(200) DEFAULT NULL,
+  `DataRecebida` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `mensagemgrupo`
 --
 
-INSERT INTO `mensagemgrupo` (`Pessoaenviada`, `Grupo`, `Mensagem2`, `DataLida`) VALUES
-(NULL, 1, 'bem vindo', NULL),
-(NULL, 2, 'bem vindo', NULL);
+INSERT INTO `mensagemgrupo` (`Pessoaenviada`, `Grupo`, `mensagem`) VALUES
+(NULL, 1, 'bem vindo'),
+(NULL, 2, 'bem vindo');
 
 -- --------------------------------------------------------
 
@@ -111,46 +86,34 @@ CREATE TABLE `usuario` (
   `nome` varchar(50) NOT NULL,
   `data_nasc` date NOT NULL,
   `senha` varchar(50) NOT NULL,
-  `CargoPessoa` int(11) DEFAULT NULL
+  primary key(IdPessoa)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `usuario`
 --
 
-INSERT INTO `usuario` (`IdPessoa`, `nome`, `data_nasc`, `senha`, `CargoPessoa`) VALUES
-(null, 'Edgar', '1984-04-07', 'e7d80ffeefa212b7c5c55700e4f7193e', 5),
-(null, 'Juremildo', '1999-07-23', '698dc19d489c4e4db73e28a713eab07b', 5),
-(null, 'Joniscreiton', '1999-07-23', '698dc19d489c4e4db73e28a713eab07b', 2),
-(null, 'Devarvino', '1999-07-23', '698dc19d489c4e4db73e28a713eab07b', 2),
-(null, 'Jenovéva', '1999-07-23', '698dc19d489c4e4db73e28a713eab07b', 3),
-(null, 'Jair', '1999-07-23', '698dc19d489c4e4db73e28a713eab07b', 4),
-(null, 'Gilmar', '1999-07-23', '698dc19d489c4e4db73e28a713eab07b', 6),
-(null, 'Braulio', '1999-07-23', '698dc19d489c4e4db73e28a713eab07b', 6),
-(null, 'admin', '1999-07-23', '698dc19d489c4e4db73e28a713eab07b', 1);
+INSERT INTO `usuario` (`IdPessoa`, `nome`, `data_nasc`, `senha`) VALUES
+(null, 'Edgar', '1984-04-07', 'e7d80ffeefa212b7c5c55700e4f7193e'),
+(null, 'Juremildo', '1999-07-23', '698dc19d489c4e4db73e28a713eab07b'),
+(null, 'Joniscreiton', '1999-07-23', '698dc19d489c4e4db73e28a713eab07b'),
+(null, 'Devarvino', '1999-07-23', '698dc19d489c4e4db73e28a713eab07b'),
+(null, 'Jenovéva', '1999-07-23', '698dc19d489c4e4db73e28a713eab07b'),
+(null, 'Jair', '1999-07-23', '698dc19d489c4e4db73e28a713eab07b'),
+(null, 'Gilmar', '1999-07-23', '698dc19d489c4e4db73e28a713eab07b'),
+(null, 'Braulio', '1999-07-23', '698dc19d489c4e4db73e28a713eab07b'),
+(null, 'admin', '1999-07-23', '698dc19d489c4e4db73e28a713eab07b');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `cargo`
---
-ALTER TABLE `cargo`
-  ADD PRIMARY KEY (`IdCargo`);
-
---
--- Indexes for table `grupo`
---
-ALTER TABLE `grupo`
-  ADD PRIMARY KEY (`IdGrupo`);
-
---
 -- Indexes for table `mensagem`
 --
 ALTER TABLE `mensagem`
-  ADD KEY `FK_Mensagem_1` (`PessoaRecebido`),
-  ADD KEY `FK_Mensagem_2` (`PessoaEnviado`);
+  ADD KEY `FK_Mensagem_1` (`Pessoarecebido`),
+  ADD KEY `FK_Mensagem_2` (`Pessoaenviada`);
 
 --
 -- Indexes for table `mensagemgrupo`
@@ -159,12 +122,6 @@ ALTER TABLE `mensagemgrupo`
   ADD KEY `FK_MensagemGrupo_1` (`Pessoaenviada`),
   ADD KEY `FK_MensagemGrupo_2` (`Grupo`);
 
---
--- Indexes for table `usuario`
---
-ALTER TABLE `usuario`
-  ADD PRIMARY KEY (`IdPessoa`),
-  ADD KEY `FK_Usuario_2` (`CargoPessoa`);
 
 --
 -- Constraints for dumped tables
@@ -174,8 +131,8 @@ ALTER TABLE `usuario`
 -- Constraints for table `mensagem`
 --
 ALTER TABLE `mensagem`
-  ADD CONSTRAINT `FK_Mensagem_1` FOREIGN KEY (`PessoaRecebido`) REFERENCES `usuario` (`IdPessoa`) ON DELETE CASCADE,
-  ADD CONSTRAINT `FK_Mensagem_2` FOREIGN KEY (`PessoaEnviado`) REFERENCES `usuario` (`IdPessoa`) ON DELETE CASCADE;
+  ADD CONSTRAINT `FK_Mensagem_1` FOREIGN KEY (`Pessoarecebido`) REFERENCES `usuario` (`IdPessoa`) ON DELETE CASCADE,
+  ADD CONSTRAINT `FK_Mensagem_2` FOREIGN KEY (`Pessoaenviada`) REFERENCES `usuario` (`IdPessoa`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `mensagemgrupo`
@@ -184,11 +141,6 @@ ALTER TABLE `mensagemgrupo`
   ADD CONSTRAINT `FK_MensagemGrupo_1` FOREIGN KEY (`Pessoaenviada`) REFERENCES `usuario` (`IdPessoa`) ON DELETE SET NULL,
   ADD CONSTRAINT `FK_MensagemGrupo_2` FOREIGN KEY (`Grupo`) REFERENCES `grupo` (`IdGrupo`) ON DELETE SET NULL;
 
---
--- Constraints for table `usuario`
---
-ALTER TABLE `usuario`
-  ADD CONSTRAINT `FK_Usuario_2` FOREIGN KEY (`CargoPessoa`) REFERENCES `cargo` (`IdCargo`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

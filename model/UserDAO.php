@@ -100,7 +100,7 @@ class UserDAO {
               session_start();
               $_SESSION["nome_usuario"] = $registro["nome"];
               $_SESSION["senha_usuario"] = $registro["senha"];
-              $_SESSION["Cargo_pessoa"] = $registro["CargoPessoa"];
+              $_SESSION["IdPessoa"] = $registro["IdPessoa"];
               return 1;
              }else{
                return 1;
