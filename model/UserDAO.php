@@ -115,6 +115,51 @@ class UserDAO {
       return 0;
     }
   }
+
+  public function ConsultarG($nome) {
+    try {
+      /* Busca pelo registro... se existir, deve trazer só uma linha,
+      pois a coluna apelido é chave primária */
+      $stmt = $this->p->query("SELECT IdGrupo FROM grupo WHERE nome = '$nome'");
+      $registro = $stmt->fetch(PDO::FETCH_ASSOC, PDO::FETCH_ORI_NEXT);
+      // Fecha a conexão
+      unset($this->p);
+      if(!$registro) {
+        // Não encontrou o usuário
+        return -2;
+      }
+      else {
+        return $registro["IdGrupo"];
+      }
+    }
+    // Em caso de erro, retorna a mensagem:
+    catch(PDOException $e) {
+      echo "Erro: ". $e->getMessage();
+      return 0;
+    }
+  }
+  public function ConsultarP($nome) {
+    try {
+      /* Busca pelo registro... se existir, deve trazer só uma linha,
+      pois a coluna apelido é chave primária */
+      $stmt = $this->p->query("SELECT IdPessoa FROM usuario WHERE nome = '$nome'");
+      $registro = $stmt->fetch(PDO::FETCH_ASSOC, PDO::FETCH_ORI_NEXT);
+      // Fecha a conexão
+      unset($this->p);
+      if(!$registro) {
+        // Não encontrou o usuário
+        return -2;
+      }
+      else {
+        return $registro["IdPessoa"];
+      }
+    }
+    // Em caso de erro, retorna a mensagem:
+    catch(PDOException $e) {
+      echo "Erro: ". $e->getMessage();
+      return 0;
+    }
+  }
   
   public function Listar($pesq) {
     $registro = array();
@@ -137,14 +182,37 @@ class UserDAO {
     }
   }
 
-  public function InsMen($obj) {
+  public function InsMeng($obj) {
     try {
 	    /* A partir daqui, o grupo é novo e será salvo no BD */
       $stmt = $this->p->prepare("INSERT INTO `mensagemgrupo` (`Pessoaenviada`, `Grupo`, `mensagem`) VALUES (?,?,?)");
       // Inicia a transação
       $this->p->beginTransaction();
       $stmt->bindValue(1, $obj->Pessoaenviada);
-      $stmt->bindValue(2, 1);
+      $stmt->bindValue(2, $obj->Grupo);
+      $stmt->bindValue(3, $obj->mensagem);
+      // Executa a query
+      $stmt->execute();
+      // Grava a transação
+      $this->p->commit();      
+      // Fecha a conexão
+      unset($this->p);
+      return 1;
+    }
+    // Em caso de erro, retorna a mensagem:
+    catch(PDOException $e) {
+      $this->erro = "Erro: " . $e->getMessage();
+      return 0;
+    }
+  }
+  public function InsMenp($obj) {
+    try {
+	    /* A partir daqui, o grupo é novo e será salvo no BD */
+      $stmt = $this->p->prepare("INSERT INTO `mensagem` (`Pessoarecebido`, `Pessoaenviada`, `mensagem`) VALUES (?,?,?)");
+      // Inicia a transação
+      $this->p->beginTransaction();
+      $stmt->bindValue(1, $obj->Pessoarecebido);
+      $stmt->bindValue(2, $obj->Pessoaenviada);
       $stmt->bindValue(3, $obj->mensagem);
       // Executa a query
       $stmt->execute();
