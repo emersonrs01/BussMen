@@ -109,6 +109,11 @@ INSERT INTO `usuario` (`IdPessoa`, `nome`, `data_nasc`, `senha`) VALUES
 --
 
 --
+-- Indexes for table `usuario`
+--
+ALTER TABLE `usuario`
+  ADD KEY `FK_Usuario_2` (`IdGrupo`);
+--
 -- Indexes for table `mensagem`
 --
 ALTER TABLE `mensagem`
@@ -141,6 +146,11 @@ ALTER TABLE `mensagemgrupo`
   ADD CONSTRAINT `FK_MensagemGrupo_1` FOREIGN KEY (`Pessoaenviada`) REFERENCES `usuario` (`IdPessoa`) ON DELETE SET NULL,
   ADD CONSTRAINT `FK_MensagemGrupo_2` FOREIGN KEY (`Grupo`) REFERENCES `grupo` (`IdGrupo`) ON DELETE SET NULL;
 
+--
+-- Constraints for table `usuario`
+--
+ALTER TABLE `usuario`
+  ADD CONSTRAINT `FK_Usuario_2` FOREIGN KEY (`IdGrupo`) REFERENCES `grupo` (`Idgrupo`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

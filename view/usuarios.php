@@ -18,9 +18,11 @@
 
     <div><label for="pass">Digite a Senha (8 Caracteres):</label>
     <input type="password" id="pass" name="password" minlength="8" required></div>
-
+    
+    <input type="date" name="data_nasc" placeholder="00/00/0000">
+    <br>    
     <label>Este Usuário Pertencerá a Qual Grupo?</label>
-    <select name="envusr" id="envusr"><?php $pesq->buscaCadastro(1);?></select><br>
+    <select name="envgrp" id="envgrp"><?php $pesq->buscaCadastro(1);?></select><br>
     <input type="submit" name="button" id="button" value="Criar"></input></form><br>
 
     <h5 style="padding-top:3vh;align-items: center; justify-content:center; text-align: center;">Alteração de Senha</h5>
@@ -32,7 +34,17 @@
     <input type="password" id="passalt" name="password" minlength="8" required></div>
     <input type="submit" name="button" id="button" value="Alterar"></input></form>
 
-    <?php
+
+
+<?php
+    include_once("../controller/UserController.php");
+    include_once("../model/User.php");
+    require_once("../model/Mensagem.php");
+    include_once("../model/UserDAO.php");
+    $obj = new UserController();
+    $obj->controlaInsercao();
+    ?>
+        <?php
         include 'footer.php'; 
     ?> 
 </body>
