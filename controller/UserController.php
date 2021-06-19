@@ -38,9 +38,11 @@ class UserController {
       $user->nome = $_POST['username'];
       $user->data_nasc = $_POST["data_nasc"];
       $user->senha = md5($_POST['password']);
-      $user->IdGrupo = $_POST["envgrp"];
   
       $DAO = new UserDAO();
+      $DAO2 = new UserDAO();
+      $resultGrupo = $DAO2->ConsultarG($_POST["envgrp"]);
+      $user->IdGrupo = $resultGrupo;
       $result = $DAO->Inserir($user);
       if($result == 1) {
         $res = "USUÁRIO CADASTRADO COM SUCESSO!";

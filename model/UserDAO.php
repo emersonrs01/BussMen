@@ -25,7 +25,7 @@ class UserDAO {
       // Inicia a transação
       $this->p->beginTransaction();
       $stmt->bindValue(1, $obj->nome);
-      $stmt->bindValue(2, 1999-07-07);
+      $stmt->bindValue(2, $obj->data_nasc);
       $stmt->bindValue(3, $obj->senha);
       $stmt->bindValue(4, $obj->IdGrupo);
     
