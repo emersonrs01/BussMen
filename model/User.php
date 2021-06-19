@@ -5,7 +5,7 @@ class User {
   private $nome;
   private $data_nasc;
   private $senha;
-  private $CargoPessoa;
+  private $IdGrupo;
 
   public function __construct() {}
 

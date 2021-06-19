@@ -32,18 +32,19 @@ class UserController {
   }
 
   public function controlaInsercao() {
-    if(isset($_POST["user"]) && isset($_POST["pwd"]) && isset($_POST["email"])) {
+    if(isset($_POST["username"]) && isset($_POST["password"]) && isset($_POST["data_nasc"])&& isset($_POST["envgrp"])) {
       $erros = array();
       $user = new User();
-      $user->apelido = $_POST['user'];
-      $user->senha = md5($_POST['pwd']);
-      $user->email = $_POST["email"];
+      $user->nome = $_POST['username'];
+      $user->data_nasc = $_POST["data_nasc"];
+      $user->senha = md5($_POST['password']);
+      $user->IdGrupo = $_POST["envgrp"];
   
       $DAO = new UserDAO();
       $result = $DAO->Inserir($user);
       if($result == 1) {
         $res = "USUÁRIO CADASTRADO COM SUCESSO!";
-        header("Location: ../view/usuarios.php?result=$res");
+        header("Location: ../view/home.php?result=$res");
       }
       else if($result == -1) {
         $erros[] = "USUÁRIO JÁ EXISTENTE! TENTE NOVAMENTE!";
@@ -111,32 +112,68 @@ class UserController {
   public function inserirMensagemG() {
     if(isset($_POST["envgrp"])) {
       $msg = $_POST["envgrp"];
-     // if (strcmp($msg, "Selecione...") !== 0){
+      if (strpos($msg, "Selecione") !== false){
 
-    //  }else{
+    }else{
         $erros = array();
         $DAO = new UserDAO();
+        $DAO2 = new UserDAO();
+        $cgrupo =  $DAO->ConsultarG($_POST["envgrp"]);
+
         $mensagem = new Mensagem();
         $mensagem->Pessoaenviada=$_SESSION["IdPessoa"];
-        $mensagem->Grupo=$_POST["envgrp"];
+        $mensagem->Grupo=$cgrupo;
         $mensagem->mensagem=$_POST["mensagem"];
-        $result = $DAO->insMen($mensagem);
+        $result = $DAO2->insMeng($mensagem);
         if($result == 1) {
           $res = "MENSAGEM CADASTRADA COM SUCESSO!";
-          header("Location: ../view/grupos.php?result=$res");
+          header("Location: ../view/home.php?result=$res");
         }
         else if($result == -1) {
           $erros[] = "GRUPO JÁ EXISTENTE! TENTE NOVAMENTE!";
           $err = serialize($erros);
-          header("Location: ../view/grupos.php?error=$err");
+          header("Location: ../view/home.php?error=$err");
         }	  
         else {
           $erros[] = "ERRO NO BANCO DE DADOS: $DAO->erro";
           $err = serialize($erros);
-          header("Location: ../view/grupos.php?error=$err");
+          header("Location: ../view/home.php?error=$err");
         }
         unset($obj);
-    //  }
+      }
+     
+    }
+    if(isset($_POST["envusr"])) {
+      $msg1 = $_POST["envusr"];
+     if (strpos($msg1, "Selecione") !== false){
+      
+    }else{
+        $erros = array();
+        $DAO = new UserDAO();
+        $DAO2 = new UserDAO();
+        $cpessoa =  $DAO->ConsultarP($_POST["envusr"]);
+
+        $mensagem = new Mensagem();
+        $mensagem->Pessoarecebido=$cpessoa;
+        $mensagem->Pessoaenviada=$_SESSION["IdPessoa"];
+        $mensagem->mensagem=$_POST["mensagem"];
+        $result = $DAO2->InsMenp($mensagem);
+        if($result == 1) {
+          $res = "MENSAGEM CADASTRADA COM SUCESSO!";
+          header("Location: ../view/home.php?result=$res");
+        }
+        else if($result == -1) {
+          $erros[] = "GRUPO JÁ EXISTENTE! TENTE NOVAMENTE!";
+          $err = serialize($erros);
+          header("Location: ../view/home.php?error=$err");
+        }	  
+        else {
+          $erros[] = "ERRO NO BANCO DE DADOS: $DAO->erro";
+          $err = serialize($erros);
+          header("Location: ../view/home.php?error=$err");
+        }
+        unset($obj);
+      }
      
     }
   }
