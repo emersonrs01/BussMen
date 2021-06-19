@@ -1,6 +1,6 @@
 <?php
 
-class Mensagem {
+class Grupo {
   private $Pessoaenviada;
   private $Pessoarecebido;
   private $mensagem;

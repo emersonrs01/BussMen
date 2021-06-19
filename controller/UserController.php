@@ -1,7 +1,9 @@
 ﻿<?php
 require_once("../model/FabricaConexao.php");
 require_once("../model/User.php");
+require_once("../model/Mensagem.php");
 require_once("../model/UserDAO.php");
+
 
 class UserController {
 
@@ -109,16 +111,18 @@ class UserController {
   public function inserirMensagemG() {
     if(isset($_POST["envgrp"])) {
       $msg = $_POST["envgrp"];
-      if (strcmp($msg, "Selecione...") !== 0){
+     // if (strcmp($msg, "Selecione...") !== 0){
 
-      }else{
+    //  }else{
         $erros = array();
         $DAO = new UserDAO();
-        $grupo = new User();
-        $grupo->nome=$_POST["insgrp"];
-        $result = $DAO->insGrupo($grupo);
+        $mensagem = new Mensagem();
+        $mensagem->Pessoaenviada=$_SESSION["IdPessoa"];
+        $mensagem->Grupo=$_POST["envgrp"];
+        $mensagem->mensagem=$_POST["mensagem"];
+        $result = $DAO->insMen($mensagem);
         if($result == 1) {
-          $res = "GRUPO CADASTRADO COM SUCESSO!";
+          $res = "MENSAGEM CADASTRADA COM SUCESSO!";
           header("Location: ../view/grupos.php?result=$res");
         }
         else if($result == -1) {
@@ -132,7 +136,7 @@ class UserController {
           header("Location: ../view/grupos.php?error=$err");
         }
         unset($obj);
-      }
+    //  }
      
     }
   }

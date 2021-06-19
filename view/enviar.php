@@ -2,6 +2,8 @@
 <html>
 <head>
 <title>Enviar Mensagem - BussMen</title>
+<script>
+</script>
 </head>
 <body>
     <?php
@@ -15,7 +17,7 @@
   <p>
     <label >Insira seu Recado Aqui:</label></p>
     <p><textarea name="mensagem" cols="120" rows="12" required></textarea></p>  
-
+     <input type="text" name="idLogin" id="idLogin"></input>
     <label for="">Deseja Enviar á um Grupo? </label>
     <select name="envgrp" id="envgrp"><?php $pesq->buscaCadastro(1);?></select><br>
     
@@ -27,9 +29,10 @@
     <?php
     include_once("../controller/UserController.php");
     include_once("../model/User.php");
+    require_once("../model/Mensagem.php");
     include_once("../model/UserDAO.php");
     $obj = new UserController();
-    $obj->inserirGrupo();
+    $obj->inserirMensagemG();
     ?>
     <?php
         include 'footer.php'; 

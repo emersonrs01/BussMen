@@ -20,6 +20,7 @@
     $user = new User();
     $user->nome = $nome_usuario;
     $user->senha = $senha_usuario;
+    $user->IdPessoa = $_SESSION["IdPessoa"];
   
     $DAO = new UserDAO();
     $result = $DAO->Consultar($user);
@@ -36,7 +37,8 @@
       echo "<script>";
       echo "document.getElementById(\"idLogin\").innerHTML = 'Logado como $nome_usuario'";
       echo "</script>";
-      if($_SESSION["Cargo_pessoa"] == 5){
+
+      if($_SESSION["IdPessoa"] == 2){
         include 'headerAdm.php';
       }else{
         include 'header.php';
