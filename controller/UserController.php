@@ -120,6 +120,8 @@ class UserController {
         $DAO2 = new UserDAO();
         $cgrupo =  $DAO->ConsultarG($_POST["envgrp"]);
 
+<<<<<<< HEAD
+=======
         $mensagem = new Mensagem();
         $mensagem->Pessoaenviada=$_SESSION["IdPessoa"];
         $mensagem->Grupo=$cgrupo;
@@ -153,6 +155,47 @@ class UserController {
         $DAO2 = new UserDAO();
         $cpessoa =  $DAO->ConsultarP($_POST["envusr"]);
 
+>>>>>>> a0e5010fd7037aaa505ef0989ca6d37464b456ba
+        $mensagem = new Mensagem();
+        $mensagem->Pessoarecebido=$cpessoa;
+        $mensagem->Pessoaenviada=$_SESSION["IdPessoa"];
+<<<<<<< HEAD
+        $mensagem->Grupo=$cgrupo;
+        $mensagem->mensagem=$_POST["mensagem"];
+        $result = $DAO2->insMeng($mensagem);
+=======
+        $mensagem->mensagem=$_POST["mensagem"];
+        $result = $DAO2->InsMenp($mensagem);
+>>>>>>> a0e5010fd7037aaa505ef0989ca6d37464b456ba
+        if($result == 1) {
+          $res = "MENSAGEM CADASTRADA COM SUCESSO!";
+          header("Location: ../view/home.php?result=$res");
+        }
+        else if($result == -1) {
+          $erros[] = "GRUPO JÁ EXISTENTE! TENTE NOVAMENTE!";
+          $err = serialize($erros);
+          header("Location: ../view/home.php?error=$err");
+        }	  
+        else {
+          $erros[] = "ERRO NO BANCO DE DADOS: $DAO->erro";
+          $err = serialize($erros);
+          header("Location: ../view/home.php?error=$err");
+        }
+        unset($obj);
+      }
+<<<<<<< HEAD
+     
+    }
+    if(isset($_POST["envusr"])) {
+      $msg1 = $_POST["envusr"];
+     if (strpos($msg1, "Selecione") !== false){
+      
+    }else{
+        $erros = array();
+        $DAO = new UserDAO();
+        $DAO2 = new UserDAO();
+        $cpessoa =  $DAO->ConsultarP($_POST["envusr"]);
+
         $mensagem = new Mensagem();
         $mensagem->Pessoarecebido=$cpessoa;
         $mensagem->Pessoaenviada=$_SESSION["IdPessoa"];
@@ -174,6 +217,8 @@ class UserController {
         }
         unset($obj);
       }
+=======
+>>>>>>> a0e5010fd7037aaa505ef0989ca6d37464b456ba
      
     }
   }
