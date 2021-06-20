@@ -12,12 +12,14 @@
             $pesq = new UserController();
     ?> 
 	<br>
-	<h2 style="padding-top:3vh;align-items: center; justify-content:center; text-align: center;">Enviar Mensagem</h2><br>
+	<h2 style="padding-top:3vh;align-items: center; justify-content:center; text-align: center;">Enviar Mensagem</h2>
     <form id="formenviar" name="formenviar" method="post" action="enviar.php" style="padding-top:3vh;align-items: center; justify-content:center; text-align: center;">
-  <p>
-    <label >Insira seu Recado Aqui:</label></p>
-    <p><textarea name="mensagem" cols="120" rows="12" required></textarea></p>  
-     <input type="text" name="idLogin" id="idLogin"></input>
+  
+    <label><h4>Insira seu Recado Aqui:</h4></label><br>
+    <label><h6>Limite de 200 Caracteres</h6></label>
+    <p><textarea name="mensagem" cols="65" rows="4" maxlength="200" required></textarea></p>  
+    <!-- <input type="text" name="idLogin" id="idLogin"></input> -->
+    
     <label for="">Deseja Enviar á um Grupo? </label>
     <select name="envgrp" id="envgrp"><?php $pesq->buscaCadastro(1);?></select><br>
     
