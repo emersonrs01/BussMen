@@ -17,7 +17,10 @@
 	        <ul id="main-menu" class="sm sm-mint">
 	    </ul>
 	    </nav>
-			<br>
+		<?php
+		echo 'Autenticado como '.$nome_usuario.'.';
+		?>
+		<br>
 	<p><b>Desenvolvido por: Emerson Da Rocha, Edgar Neto.
 ADS UPF 2021/01</b></p>
   </div>

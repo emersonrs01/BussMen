@@ -16,7 +16,11 @@ require_once("../model/FabricaConexao.php");
 require_once("../model/User.php");
 require_once("../model/Mensagem.php");
 require_once("../model/UserDAO.php");
-echo $_POST["username"].", ".$_POST["password"].", ".$_POST["data_nasc"].", ".$_POST["envgrp"];
+//$DAO = new UserDAO();
+//$resultGrupo = $DAO->ConsultarG($_POST["renomgrp"]);
+echo $_POST["groupnvnm"].", ".$_POST["renomgrp"].$resultGrupo;
+
+
 ?>
     <?php
         include 'footer.php'; 

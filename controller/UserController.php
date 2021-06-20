@@ -62,6 +62,30 @@ class UserController {
       unset($user);
     }
   }
+  public function renomeiaGrupo() {
+    if(isset($_POST["renomgrp"])) {
+      $erros = array();
+      $grupo = new User();
+      
+      $DAO = new UserDAO();
+      $DAO2 = new UserDAO();
+
+      $resultGrupo = $DAO->ConsultarG($_POST["renomgrp"]);
+      $grupo->nome = $_POST['groupnvnm'];
+      $grupo->IdGrupo = $resultGrupo;
+      $result = $DAO2->renGrupo($grupo);
+      if($result == 1) {
+        $res = "GRUPO ALTERADO COM SUCESSO!";
+        header("Location: ../view/home.php?result=$res");
+      }else{
+        $erros[] = "ERRO NO BANCO DE DADOS: $DAO->erro";
+        $err = serialize($erros);
+        header("Location: ../view/grupos.php?error=$err");
+      }
+      
+      unset($user);
+    }
+  }
   public function buscaCadastro($op) {
       $DAO = new UserDAO();
       if($op==1){

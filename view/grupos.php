@@ -5,7 +5,7 @@
 </head>
 <body>
 <?php
-        include("../include/SessaoValidate.php");  
+        include_once("../include/SessaoValidate.php");  
         include_once("../controller/UserController.php");
             $pesq = new UserController();
     ?> 
@@ -42,11 +42,15 @@
     include_once("../model/User.php");
     include_once("../model/UserDAO.php");
     $obj = new UserController();
+    $obj2 = new UserController();
     $obj->inserirGrupo();
+    $obj2->renomeiaGrupo();
+    
+
     ?>
 
     <?php
-        include 'footer.php'; 
+        include_once('footer.php'); 
     ?> 
 </body>
 </html>

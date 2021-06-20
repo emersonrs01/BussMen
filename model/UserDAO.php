@@ -75,6 +75,28 @@ class UserDAO {
     }
   }
 
+  public function renGrupo($obj) {
+    try {
+	    $stmt = $this->p->prepare("UPDATE `grupo` SET `nome` = '$obj->nome' WHERE `IdGrupo` = '$obj->IdGrupo'");
+      // Inicia a transação
+      $this->p->beginTransaction();
+      //$stmt->bindValue(1, $obj->nome);
+      //$stmt->bindValue(2, $obj->idGrupo);
+      // Executa a query
+      $stmt->execute();
+      // Grava a transação
+      $this->p->commit();      
+      // Fecha a conexão
+      unset($this->p);
+      return 1;
+    }
+    // Em caso de erro, retorna a mensagem:
+    catch(PDOException $e) {
+      $this->erro = "Erro: " . $e->getMessage();
+      return 0;
+    }
+  }
+
   // consulta
   public function Consultar($obj) {
     try {
