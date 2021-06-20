@@ -100,6 +100,7 @@ class UserDAO {
               $_SESSION["nome_usuario"] = $registro["nome"];
               $_SESSION["senha_usuario"] = $registro["senha"];
               $_SESSION["IdPessoa"] = $registro["IdPessoa"];
+              $_SESSION["IdGrupo"] = $registro["IdGrupo"];
               return 1;
              }else{
                return 1;
@@ -130,6 +131,57 @@ class UserDAO {
       else {
         return $registro["IdGrupo"];
       }
+    }
+    // Em caso de erro, retorna a mensagem:
+    catch(PDOException $e) {
+      echo "Erro: ". $e->getMessage();
+      return 0;
+    }
+  }
+
+  public function ConsultarM($pessoa) {
+    $registro = array();
+    $items = array();
+    try {
+      /* Busca pelo registro... se existir, deve trazer só uma linha,
+      pois a coluna apelido é chave primária */
+      $stmt = $this->p->query("SELECT m.mensagem as 'Mensagem',DATE_FORMAT(m.DataRecebida, '%d/%m/%Y %H:%i') as 'horarecebida',u.nome as 'remetente' from mensagem m join usuario u on m.Pessoaenviada = u.IdPessoa where m.Pessoarecebido = $pessoa ORDER by m.DataRecebida desc LIMIT 11");
+      while($registro = $stmt->fetch(PDO::FETCH_ASSOC, PDO::FETCH_ORI_NEXT))
+      {
+        $p = new Mensagem();
+      if(isset($registro["Mensagem"]))
+        $p->Pessoaenviada = $registro["remetente"];
+        $p->mensagem = $registro["Mensagem"];
+        $p->Hora = $registro["horarecebida"];
+        $items[] = $p;
+      }
+      return $items;      
+      unset($this->p);
+    }
+    // Em caso de erro, retorna a mensagem:
+    catch(PDOException $e) {
+      echo "Erro: ". $e->getMessage();
+      return 0;
+    }
+  }
+  public function ConsultarMG($grupo) {
+    $registro = array();
+    $items = array();
+    try {
+      /* Busca pelo registro... se existir, deve trazer só uma linha,
+      pois a coluna apelido é chave primária */
+      $stmt = $this->p->query("SELECT m.mensagem as 'Mensagem',DATE_FORMAT(m.DataRecebida, '%d/%m/%Y %H:%i') as 'horarecebida',g.nome as 'remetente' from mensagemgrupo m join Grupo g on m.Grupo = g.IdGrupo where m.Grupo = $grupo ORDER by m.DataRecebida desc LIMIT 11");
+      while($registro = $stmt->fetch(PDO::FETCH_ASSOC, PDO::FETCH_ORI_NEXT))
+      {
+        $p = new Mensagem();
+      if(isset($registro["Mensagem"]))
+        $p->Pessoaenviada = $registro["remetente"];
+        $p->mensagem = $registro["Mensagem"];
+        $p->Hora = $registro["horarecebida"];
+        $items[] = $p;
+      }
+      return $items;      
+      unset($this->p);
     }
     // Em caso de erro, retorna a mensagem:
     catch(PDOException $e) {

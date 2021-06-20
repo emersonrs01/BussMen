@@ -38,7 +38,7 @@
       echo "document.getElementById(\"idLogin\").innerHTML = 'Logado como $nome_usuario'";
       echo "</script>";
 
-      if($_SESSION["IdPessoa"] == 1){
+      if($_SESSION["IdPessoa"] == 4){
         include 'headerAdm.php';
       }else{
         include 'header.php';

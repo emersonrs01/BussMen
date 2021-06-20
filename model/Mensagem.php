@@ -5,6 +5,7 @@ class Mensagem {
   private $Pessoarecebido;
   private $mensagem;
   private $Grupo;
+  private $Hora;
 
   public function __construct() {}
 

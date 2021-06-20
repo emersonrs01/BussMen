@@ -86,6 +86,49 @@ class UserController {
     }
 
   }
+  public function buscaMensagemG($op) {
+    $DAO = new UserDAO();
+    $DAO2 = new UserDAO();
+    $divName = "msg";
+    $divName2 = "nom";
+    $divName3 = "men";
+    $divName4 = "dat";
+    $usuario = $DAO->ConsultarM($_SESSION["IdPessoa"]);
+    $usuario1 = $DAO2->ConsultarMG($_SESSION["IdGrupo"]);
+    if($op==1){
+      if(count($usuario) > 0) {
+        for($i = 0; $i < count($usuario); $i++) {
+          $remetente   = $usuario[$i]->Pessoaenviada;
+          $mensagem   = $usuario[$i]->mensagem;
+          $Hora   = $usuario[$i]->Hora;  
+          echo '<div id="'.$divName.'">';
+            echo "<table> <tr>";
+              echo '<div id="'.$divName2.'">'.$remetente."</div>";
+              echo '<div id="'.$divName3.'">'.$mensagem."</div>";
+              echo '<div id="'.$divName4.'">'.$Hora."</div>";
+            echo"</tr></table>";
+          echo "</div>";
+        }
+      }
+    }else{
+      if(count($usuario1) > 0) {
+        for($i = 0; $i < count($usuario1); $i++) {
+          $remetente   = $usuario1[$i]->Pessoaenviada;
+          $mensagem   = $usuario1[$i]->mensagem;
+          $Hora   = $usuario1[$i]->Hora;  
+          echo '<div id="'.$divName.'">';
+            echo "<table> <tr>";
+              echo '<div id="'.$divName2.'">'.$remetente."</div>";
+              echo '<div id="'.$divName3.'">'.$mensagem."</div>";
+              echo '<div id="'.$divName4.'">'.$Hora."</div>";
+            echo"</tr></table>";
+          echo "</div>";
+        }
+      }
+
+    }
+}
+
   public function inserirGrupo() {
     if(isset($_POST["insgrp"])) {
       $erros = array();

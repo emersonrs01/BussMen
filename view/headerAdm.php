@@ -17,7 +17,6 @@
 	  <ul id="main-menu" class="sm sm-mint">
 			<li><a href="home.php">Inicio</a></li>
 	  	<li><a href="enviar.php">Enviar</a></li>
-	  	<li><a href="enviadas.php">Enviadas</a></li>
     	<li><a href="recebidas.php">Recebidas</a></li>
     	<li><a href="grupos.php">Grupos</a></li>
 	  	<li><a href="usuarios.php">Usuários</a></li>
