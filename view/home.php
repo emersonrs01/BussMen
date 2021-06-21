@@ -7,9 +7,9 @@
     <?php
         include("../include/SessaoValidate.php"); 
     ?> 
-	<br>
-	Bem Vindo ao Sistema Bussmen<br><br>
-    Acesse as ferramentas no menu acima.<br><br>
+	<br><br><br>
+	Bem Vindo ao Sistema Bussmen<br><br><br>
+    Acesse as ferramentas no menu acima.<br><br><br>
     <?php
     date_default_timezone_set("America/Sao_Paulo");
     $ndia = date("w");$nmes = date("n");$ano = date("Y");

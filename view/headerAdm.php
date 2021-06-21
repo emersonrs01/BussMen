@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Cabeçalho APP Aulas</title>
+<title>BussMen .:. Mensagens Corporativas</title>
 	<link rel="stylesheet" href="../resources/bootstrap/css/bootstrap.min.css">
 	<script src="../resources/jquery/jquery-3.6.0.min.js"></script>
 	<script src="../resources/bootstrap/js/bootstrap.min.js"></script>
