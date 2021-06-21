@@ -64,6 +64,10 @@ class UserController {
   }
   public function renomeiaGrupo() {
     if(isset($_POST["renomgrp"])) {
+      $msg = isset($_POST["renomgrp"]);
+      if (strpos($msg, "Selecione") !== false){
+
+      }else{
       $erros = array();
       $grupo = new User();
       
@@ -84,6 +88,7 @@ class UserController {
       }
       
       unset($user);
+      }
     }
   }
   public function buscaCadastro($op) {
@@ -155,26 +160,31 @@ class UserController {
 
   public function inserirGrupo() {
     if(isset($_POST["insgrp"])) {
-      $erros = array();
-      $DAO = new UserDAO();
-      $grupo = new User();
-      $grupo->nome=$_POST["insgrp"];
-      $result = $DAO->insGrupo($grupo);
-      if($result == 1) {
-        $res = "GRUPO CADASTRADO COM SUCESSO!";
-        header("Location: ../view/grupos.php?result=$res");
+      $msg = isset($_POST["insgrp"]);
+      if (strpos($msg, "Selecione") !== false){
+
+      }else{
+        $erros = array();
+        $DAO = new UserDAO();
+        $grupo = new User();
+        $grupo->nome=$_POST["insgrp"];
+        $result = $DAO->insGrupo($grupo);
+        if($result == 1) {
+          $res = "GRUPO CADASTRADO COM SUCESSO!";
+          header("Location: ../view/grupos.php?result=$res");
+        }
+        else if($result == -1) {
+          $erros[] = "GRUPO JÁ EXISTENTE! TENTE NOVAMENTE!";
+          $err = serialize($erros);
+          header("Location: ../view/grupos.php?error=$err");
+        }	  
+        else {
+          $erros[] = "ERRO NO BANCO DE DADOS: $DAO->erro";
+          $err = serialize($erros);
+          header("Location: ../view/grupos.php?error=$err");
+        }
+        unset($obj);
       }
-      else if($result == -1) {
-        $erros[] = "GRUPO JÁ EXISTENTE! TENTE NOVAMENTE!";
-        $err = serialize($erros);
-        header("Location: ../view/grupos.php?error=$err");
-      }	  
-      else {
-        $erros[] = "ERRO NO BANCO DE DADOS: $DAO->erro";
-        $err = serialize($erros);
-        header("Location: ../view/grupos.php?error=$err");
-      }
-      unset($obj);
     }
   }
 
@@ -246,7 +256,38 @@ class UserController {
      
     }
   }
-  
+  public function alteraGrupo() {
+    if(isset($_POST["altusrgrp"])) {
+      $msg = $_POST["altusrgrp"];
+      $msg1 = $_POST["altusrgrp"];
+      if (strpos($msg, "Selecione") !== false){
+      }else{
+        if (strpos($msg1, "Selecione") !== false){
+        }else{
+          $erros = array();
+          $grupo = new User();
+          
+          $DAO = new UserDAO();
+          $DAO2 = new UserDAO();
+    
+          $resultGrupo = $DAO->ConsultarG($_POST["altusrgrp"]);
+          $grupo->nome = $_POST['altgrpusr'];
+          $grupo->IdGrupo = $resultGrupo;
+          $result = $DAO2->altGrupo($grupo);
+          if($result == 1) {
+            $res = "GRUPO ALTERADO COM SUCESSO!";
+            header("Location: ../view/home.php?result=$res");
+          }else{
+            $erros[] = "ERRO NO BANCO DE DADOS: $DAO->erro";
+            $err = serialize($erros);
+            header("Location: ../view/grupos.php?error=$err");
+          }
+          
+          unset($user);
+        }
+      }
+    }
+  }
 }
 
 ?>

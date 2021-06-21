@@ -1,7 +1,16 @@
-<!DOCTYPE html>
 <?php
-        include("../include/SessaoValidate.php");  
+    include("../include/SessaoValidate.php");  
+    include_once("../controller/UserController.php");
+    include_once("../model/User.php");
+    require_once("../model/Mensagem.php");
+    include_once("../model/UserDAO.php");
+    $pesq = new UserController();
+    $obj = new UserController();
+    $obj->inserirMensagemG();
+
+    include 'footer.php'; 
     ?> 
+<!DOCTYPE html>
 <html>
 <head>
 <title>Mensagens Recebidas - BussMen</title>
@@ -9,11 +18,6 @@
 <link rel="stylesheet" href="../resources/estilosmr.css">
 </head>
 <body>
-<?php
-        include_once("../include/SessaoValidate.php");  
-        include_once("../controller/UserController.php");
-            $pesq = new UserController();
-    ?> 
     <div id="container">
         <h2>Mensagens Recebidas</h2>
         <div id="geral">
@@ -30,19 +34,6 @@
                     </div>
             </div>
         </div>
-    <?php
-    include_once("../controller/UserController.php");
-    include_once("../model/User.php");
-    require_once("../model/Mensagem.php");
-    include_once("../model/UserDAO.php");
-    $obj = new UserController();
-    $obj->inserirMensagemG();
-    ?>
-    <?php
-        include 'footer.php'; 
-    ?> 
-    <?php
-        include 'footer.php'; 
-    ?> 
+    </div>
 </body>
 </html>

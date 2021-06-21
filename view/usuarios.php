@@ -1,14 +1,20 @@
+<?php
+        include("../include/SessaoValidate.php");  
+        include_once("../controller/UserController.php");
+        include_once("../model/User.php");
+        require_once("../model/Mensagem.php");
+        include_once("../model/UserDAO.php");
+        $pesq = new UserController();
+        $obj = new UserController();
+        $obj->controlaInsercao();
+        include 'footer.php'; 
+    ?> 
 <!DOCTYPE html>
 <html>
 <head>
 <title>BussMen - Alteração de Usuários</title>
 </head>
 <body>
-    <?php
-        include("../include/SessaoValidate.php");  
-        include_once("../controller/UserController.php");
-            $pesq = new UserController();
-    ?> 
 	<br>
 	<h5 style="padding-top:3vh;align-items: center; justify-content:center; text-align: center;">Adição de Usuários</h5>
 
@@ -33,19 +39,5 @@
     <div><label for="passalt">Digite a Nova Senha (8 Caracteres):</label>
     <input type="password" id="passalt" name="password" minlength="8" required></div>
     <input type="submit" name="button" id="button" value="Alterar"></input></form>
-
-
-
-<?php
-    include_once("../controller/UserController.php");
-    include_once("../model/User.php");
-    require_once("../model/Mensagem.php");
-    include_once("../model/UserDAO.php");
-    $obj = new UserController();
-    $obj->controlaInsercao();
-    ?>
-        <?php
-        include 'footer.php'; 
-    ?> 
 </body>
 </html>
