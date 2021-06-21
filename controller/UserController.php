@@ -288,6 +288,30 @@ class UserController {
       }
     }
   }
+  public function alteraSenha() {
+    if(isset($_POST["envusr"])) {
+      $msg = $_POST["envusr"];
+      if (strpos($msg, "Selecione") !== false){
+      }else{
+        $erros = array();
+        $usuario = new User();
+        $DAO = new UserDAO();
+
+        $usuario->nome = $_POST['envusr'];
+        $usuario->senha = md5($_POST['password']);
+        $result = $DAO->altSenha($usuario);
+        if($result == 1) {
+          $res = "SENHA DO USUARIO ALTERADA COM SUCESSO!";
+          header("Location: ../view/home.php?result=$res");
+        }else{
+          $erros[] = "ERRO NO BANCO DE DADOS: $DAO->erro";
+          $err = serialize($erros);
+          header("Location: ../view/grupos.php?error=$err");
+        }
+        unset($user);
+      }
+    }
+  }
 }
 
 ?>

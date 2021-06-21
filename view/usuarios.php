@@ -7,6 +7,7 @@
         $pesq = new UserController();
         $obj = new UserController();
         $obj->controlaInsercao();
+        $obj->alteraSenha();
         include 'footer.php'; 
     ?> 
 <!DOCTYPE html>
