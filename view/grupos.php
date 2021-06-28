@@ -1,14 +1,23 @@
+<?php
+    include_once("../include/SessaoValidate.php"); 
+    include_once("../controller/UserController.php");
+    include_once("../model/User.php");
+    include_once("../model/UserDAO.php");
+    $pesq = new UserController();
+    $obj = new UserController();
+    $obj->inserirGrupo();
+    $obj->renomeiaGrupo();
+    $obj->alteraGrupo();
+    include_once('footer.php'); 
+    ?>
 <!DOCTYPE html>
 <html>
 <head>
 <title>BussMen - Alteração de Grupos</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-<?php
-        include_once("../include/SessaoValidate.php");  
-        include_once("../controller/UserController.php");
-            $pesq = new UserController();
-    ?> 
 	<br>
 	<h5 style="padding-top:3vh;align-items: center; justify-content:center; text-align: center;">Adição de Grupos</h5>
 
@@ -36,21 +45,6 @@
     <label>Para Qual Grupo? </label>
     <select name="altusrgrp" id="altusrgrp"><?php $pesq->buscaCadastro(1);?></select><br>
     <input type="submit" name="button" id="button" value="Alterar"></input><br></form><br>
-    
-    <?php
-    include_once("../controller/UserController.php");
-    include_once("../model/User.php");
-    include_once("../model/UserDAO.php");
-    $obj = new UserController();
-    $obj2 = new UserController();
-    $obj->inserirGrupo();
-    $obj2->renomeiaGrupo();
-    
 
-    ?>
-
-    <?php
-        include_once('footer.php'); 
-    ?> 
 </body>
 </html>

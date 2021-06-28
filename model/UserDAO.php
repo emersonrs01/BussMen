@@ -77,7 +77,72 @@ class UserDAO {
 
   public function renGrupo($obj) {
     try {
-	    $stmt = $this->p->prepare("UPDATE `grupo` SET `nome` = '$obj->nome' WHERE `IdGrupo` = '$obj->IdGrupo'");
+      $sql = "UPDATE `grupo` SET `nome` =? WHERE `IdGrupo` = ?";
+	    $stmt = $this->p->prepare($sql);
+      // Inicia a transação
+      $this->p->beginTransaction();
+      //$stmt->bindValue(1, $obj->nome);
+      //$stmt->bindValue(2, $obj->IdGrupo);
+      // Executa a query
+      $stmt->execute([$obj->nome, $obj->IdGrupo]);
+      // Grava a transação
+      $this->p->commit();      
+      // Fecha a conexão
+      unset($this->p);
+      return 1;
+    }
+    // Em caso de erro, retorna a mensagem:
+    catch(PDOException $e) {
+      $this->erro = "Erro: " . $e->getMessage();
+      return 0;
+    }
+  }
+  public function altGrupo($obj) {
+    try {
+	    $stmt = $this->p->prepare("UPDATE `usuario` SET `IdGrupo` = '$obj->IdGrupo' WHERE `nome` = '$obj->nome'");
+      // Inicia a transação
+      $this->p->beginTransaction();
+      //$stmt->bindValue(1, $obj->nome);
+      //$stmt->bindValue(2, $obj->idGrupo);
+      // Executa a query
+      $stmt->execute();
+      // Grava a transação
+      $this->p->commit();      
+      // Fecha a conexão
+      unset($this->p);
+      return 1;
+    }
+    // Em caso de erro, retorna a mensagem:
+    catch(PDOException $e) {
+      $this->erro = "Erro: " . $e->getMessage();
+      return 0;
+    }
+  }
+  public function delUsr($obj) {
+    try {
+	    $stmt = $this->p->prepare("DELETE from usuario WHERE nome = '$obj->nome' ");
+      
+      // Inicia a transação
+      $this->p->beginTransaction();
+      //$stmt->bindValue(1, $obj->nome);
+      //$stmt->bindValue(2, $obj->idGrupo);
+      // Executa a query
+      $stmt->execute();
+      // Grava a transação
+      $this->p->commit();      
+      // Fecha a conexão
+      unset($this->p);
+      return 1;
+    }
+    // Em caso de erro, retorna a mensagem:
+    catch(PDOException $e) {
+      $this->erro = "Erro: " . $e->getMessage();
+      return 0;
+    }
+  }
+  public function altSenha($obj) {
+    try {
+	    $stmt = $this->p->prepare("UPDATE `usuario` SET `senha` = '$obj->senha' WHERE `nome` = '$obj->nome'");
       // Inicia a transação
       $this->p->beginTransaction();
       //$stmt->bindValue(1, $obj->nome);

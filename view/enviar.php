@@ -1,3 +1,15 @@
+<?php
+    include("../include/SessaoValidate.php");  
+    include_once("../controller/UserController.php");
+    include_once("../model/User.php");
+    require_once("../model/Mensagem.php");
+    include_once("../model/UserDAO.php");
+    $pesq = new UserController();
+    $obj = new UserController();
+    $obj->inserirMensagemG();
+
+    include 'footer.php'; 
+    ?> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,11 +18,6 @@
 </script>
 </head>
 <body>
-    <?php
-        include("../include/SessaoValidate.php");  
-        include_once("../controller/UserController.php");
-            $pesq = new UserController();
-    ?> 
 	<br>
 	<h2 style="padding-top:3vh;align-items: center; justify-content:center; text-align: center;">Enviar Mensagem</h2>
     <form id="formenviar" name="formenviar" method="post" action="enviar.php" style="padding-top:3vh;align-items: center; justify-content:center; text-align: center;">
@@ -28,16 +35,5 @@
    
     <input type="submit" name="button" id="button" value="Enviar"></input>
     </form>
-    <?php
-    include_once("../controller/UserController.php");
-    include_once("../model/User.php");
-    require_once("../model/Mensagem.php");
-    include_once("../model/UserDAO.php");
-    $obj = new UserController();
-    $obj->inserirMensagemG();
-    ?>
-    <?php
-        include 'footer.php'; 
-    ?> 
 </body>
 </html>

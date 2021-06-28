@@ -39,9 +39,9 @@
       echo "</script>";
 
       if($_SESSION["IdPessoa"] == 1){
-        include 'headerAdm.php';
+        include_once 'headerAdm.php';
       }else{
-        include 'header.php';
+        include_once 'header.php';
       }
     }
   }
