@@ -7,6 +7,10 @@
     $pesq = new UserController();
     $obj = new UserController();
     $obj->inserirMensagemG();
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
     include 'footer.php'; 
     ?> 
 <!DOCTYPE html>

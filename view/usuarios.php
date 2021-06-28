@@ -8,6 +8,10 @@
         $obj = new UserController();
         $obj->controlaInsercao();
         $obj->alteraSenha();
+<<<<<<< Updated upstream
+=======
+        $obj->excluiUsr();
+>>>>>>> Stashed changes
         include 'footer.php'; 
     ?> 
 <!DOCTYPE html>
@@ -25,8 +29,12 @@
 
     <div><label for="pass">Digite a Senha (8 Caracteres):</label>
     <input type="password" id="pass" name="password" minlength="8" required></div>
+<<<<<<< Updated upstream
     
     <div><label for="pass">Qual a Data de Nascimento? </label>
+=======
+    <label>Qual e a data de nascimento?</label>
+>>>>>>> Stashed changes
     <input type="date" name="data_nasc" placeholder="00/00/0000">
     <br>    
     <label>Este Usuário Pertencerá a Qual Grupo?</label>
@@ -41,5 +49,15 @@
     <div><label for="passalt">Digite a Nova Senha (8 Caracteres):</label>
     <input type="password" id="passalt" name="password" minlength="8" required></div>
     <input type="submit" name="button" id="button" value="Alterar"></input></form>
+<<<<<<< Updated upstream
+=======
+
+    <h5 style="padding-top:3vh;align-items: center; justify-content:center; text-align: center;">Exclusao de usuario</h5>
+    <form id="formusergrp" name="formusergrp" method="post" action="usuarios.php" style="padding-top:3vh;align-items: center; justify-content:center; text-align: center;">
+    <label>Deseja excluir Qual Usuário? </label>
+    <select name="usrexc" id="usrexc"><?php $pesq->buscaCadastro(2);?></select><br>
+    
+    <input type="submit" name="button" id="button" value="excluir"></input></form>
+>>>>>>> Stashed changes
 </body>
 </html>

@@ -312,6 +312,31 @@ class UserController {
       }
     }
   }
+<<<<<<< Updated upstream
+=======
+  public function excluiUsr() {
+    if(isset($_POST["usrexc"])) {
+      $msg = $_POST["usrexc"];
+      if (strpos($msg, "Selecione") !== false){
+      }else{
+        $erros = array();
+        $usuario = new User();
+        $DAO = new UserDAO();
+        $usuario->nome = $_POST['usrexc'];
+        $result = $DAO->delUsr($usuario);
+        if($result == 1) {
+          $res = "USUARIO EXCLUIDO COM SUCESSO!";
+          header("Location: ../view/home.php?result=$res");
+        }else{
+          $erros[] = "ERRO NO BANCO DE DADOS: $DAO->erro";
+          $err = serialize($erros);
+          header("Location: ../view/grupos.php?error=$err");
+        }
+        unset($user);
+      }
+    }
+  }
+>>>>>>> Stashed changes
 }
 
 ?>
