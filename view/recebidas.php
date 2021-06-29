@@ -7,6 +7,7 @@
     $pesq = new UserController();
     $obj = new UserController();
     $obj->inserirMensagemG();
+
     include 'footer.php'; 
     ?> 
 <!DOCTYPE html>
@@ -21,13 +22,13 @@
         <h2>Mensagens Recebidas</h2>
         <div id="geral">
             <div id="mrp">
-                <h5 id="mp">Mensagens Particulares</h5>
+                <h4 id="mp">Mensagens Pessoais</h4>
                     <div id="bmp">
                     <?php $pesq->buscaMensagemG(1);?>
                     </div>
             </div>
             <div id="mrg">
-                <h5 id="mg">Mensagem para Seu Grupo</h5>
+                <h4 id="mg">Mensagem Grupo</h4>
                     <div id="bmg">
                     <?php $pesq->buscaMensagemG(2);?>
                     </div>

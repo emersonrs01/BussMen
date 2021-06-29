@@ -264,6 +264,7 @@ class UserController {
       }else{
         if (strpos($msg1, "Selecione") !== false){
         }else{
+
           $erros = array();
           $grupo = new User();
           
@@ -271,6 +272,9 @@ class UserController {
           $DAO2 = new UserDAO();
     
           $resultGrupo = $DAO->ConsultarG($_POST["altusrgrp"]);
+          if($_POST['altgrpusr'] == $_SESSION["nome_usuario"]){
+            $_SESSION["IdGrupo"] = $resultGrupo;
+          }
           $grupo->nome = $_POST['altgrpusr'];
           $grupo->IdGrupo = $resultGrupo;
           $result = $DAO2->altGrupo($grupo);
@@ -302,6 +306,28 @@ class UserController {
         $result = $DAO->altSenha($usuario);
         if($result == 1) {
           $res = "SENHA DO USUARIO ALTERADA COM SUCESSO!";
+          header("Location: ../view/home.php?result=$res");
+        }else{
+          $erros[] = "ERRO NO BANCO DE DADOS: $DAO->erro";
+          $err = serialize($erros);
+          header("Location: ../view/grupos.php?error=$err");
+        }
+        unset($user);
+      }
+    }
+  }
+  public function excluiUsr() {
+    if(isset($_POST["usrexc"])) {
+      $msg = $_POST["usrexc"];
+      if (strpos($msg, "Selecione") !== false){
+      }else{
+        $erros = array();
+        $usuario = new User();
+        $DAO = new UserDAO();
+        $usuario->nome = $_POST['usrexc'];
+        $result = $DAO->delUsr($usuario);
+        if($result == 1) {
+          $res = "USUARIO EXCLUIDO COM SUCESSO!";
           header("Location: ../view/home.php?result=$res");
         }else{
           $erros[] = "ERRO NO BANCO DE DADOS: $DAO->erro";
