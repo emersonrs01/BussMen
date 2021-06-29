@@ -22,7 +22,7 @@
         <h2>Mensagens Recebidas</h2>
         <div id="geral">
             <div id="mrp">
-                <h4 id="mp">Mensagem Pessoa</h4>
+                <h4 id="mp">Mensagens Pessoais</h4>
                     <div id="bmp">
                     <?php $pesq->buscaMensagemG(1);?>
                     </div>

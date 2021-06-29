@@ -18,7 +18,7 @@
 	    </ul>
 	    </nav>
 		<?php
-		echo 'Usuário Autenticado ['.$nome_usuario.'].';
+		echo 'Autenticado como '.$nome_usuario.'.';
 		?>
 		<br>
 	<p><b>Desenvolvido por: Emerson Da Rocha, Edgar Neto.

@@ -264,6 +264,7 @@ class UserController {
       }else{
         if (strpos($msg1, "Selecione") !== false){
         }else{
+
           $erros = array();
           $grupo = new User();
           
@@ -271,6 +272,9 @@ class UserController {
           $DAO2 = new UserDAO();
     
           $resultGrupo = $DAO->ConsultarG($_POST["altusrgrp"]);
+          if($_POST['altgrpusr'] == $_SESSION["nome_usuario"]){
+            $_SESSION["IdGrupo"] = $resultGrupo;
+          }
           $grupo->nome = $_POST['altgrpusr'];
           $grupo->IdGrupo = $resultGrupo;
           $result = $DAO2->altGrupo($grupo);
