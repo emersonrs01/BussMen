@@ -2,9 +2,9 @@
 // Classe herda métodos e atributos da classe PDO
 // Mais informações: https://php.net/manual/en/book.pdo.php
 class FabricaConexao extends PDO {
-  private $dbn = "mysql:host=localhost;port=3306;dbname=bussmen";
-  private $usr = "root";
-  private $pwd = "";
+  private $dbn = "mysql:host=database-2.caz3vbra7dwn.us-east-1.rds.amazonaws.com;port=3306;dbname=bussmen";
+  private $usr = "admin";
+  private $pwd = "12345678";
   public $handle = null;
 
   // Construtor do objeto de conexão
