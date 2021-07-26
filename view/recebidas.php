@@ -1,3 +1,13 @@
+<?php
+    include("../include/SessaoValidate.php");  
+    include_once("../controller/UserController.php");
+    include_once("../model/User.php");
+    require_once("../model/Mensagem.php");
+    include_once("../model/UserDAO.php");
+    $pesq = new UserController();
+
+    include 'footer.php'; 
+    ?> 
 <!DOCTYPE html>
 <html>
 <head>
