@@ -28,7 +28,7 @@
             <div id="mrg">
                 <h4 id="mg">Mensagem Grupo</h4>
                     <div id="bmg">
-
+                    <?php $pesq->buscaMensagemG(2);?>
                     </div>
             </div>
         </div>
