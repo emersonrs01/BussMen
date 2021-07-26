@@ -12,13 +12,13 @@
             <div id="mrp">
                 <h4 id="mp">Mensagens Pessoais</h4>
                     <div id="bmp">
-                    <?php $pesq->buscaMensagemG(1);?>
+
                     </div>
             </div>
             <div id="mrg">
                 <h4 id="mg">Mensagem Grupo</h4>
                     <div id="bmg">
-                    <?php $pesq->buscaMensagemG(2);?>
+
                     </div>
             </div>
         </div>
