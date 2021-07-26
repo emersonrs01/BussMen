@@ -5,9 +5,6 @@
     require_once("../model/Mensagem.php");
     include_once("../model/UserDAO.php");
     $pesq = new UserController();
-    $obj = new UserController();
-    $obj->inserirMensagemG();
-
     include 'footer.php'; 
     ?> 
 <!DOCTYPE html>
