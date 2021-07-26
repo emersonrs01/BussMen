@@ -22,7 +22,7 @@
             <div id="mrp">
                 <h4 id="mp">Mensagens Pessoais</h4>
                     <div id="bmp">
-
+                    <?php $pesq->buscaMensagemG(1);?>
                     </div>
             </div>
             <div id="mrg">
